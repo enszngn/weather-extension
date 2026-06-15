@@ -1,4 +1,4 @@
-# 🌤️ Weather New Tab
+# Weather New Tab
 
 A lightweight browser extension that replaces your New Tab page with a beautiful, fast-loading weather dashboard. Built with [WXT](https://wxt.dev/), React 19, and TypeScript.
 
