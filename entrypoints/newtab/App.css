@@ -4,15 +4,19 @@ body, html, #root {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #121316; /* Kömür / Koyu Slate tonu */
+  background-color: #121316;
 }
 
-.iframe-container {
+/* Full-screen stacking context so TopSites can float over the iframe */
+.layout {
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
 .weather-iframe {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   border: none;

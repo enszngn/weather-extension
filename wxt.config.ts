@@ -4,7 +4,16 @@ import { defineConfig } from 'wxt';
 export default defineConfig({
   modules: ['@wxt-dev/module-react'],
   manifest: {
-    permissions: ['storage'],
+    name: 'Weather In New Tab',
+    description: 'Exactly as the name implies.',
+    permissions: ['storage', 'topSites'],
+    icons: {
+      16: 'icon/16.png',
+      32: 'icon/32.png',
+      48: 'icon/48.png',
+      96: 'icon/96.png',
+      128: 'icon/128.png',
+    },
     host_permissions: [
       'https://*.internal/*',
       'https://enszngn.github.io/*',
@@ -12,3 +21,4 @@ export default defineConfig({
     ]
   }
 });
+
