@@ -49,7 +49,3 @@ types/             # Shared TypeScript types
 utils/             # Pure utility functions
 public/            # Static assets
 ```
-
-## Contributing & Agent Guidelines
-
-See [AGENT.md](./AGENT.md) for project principles, coding conventions, and the agent activity log.
