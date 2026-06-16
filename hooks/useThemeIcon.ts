@@ -5,17 +5,17 @@ export function useThemeIcon() {
     const updateIconTheme = (e?: MediaQueryListEvent | MediaQueryList) => {
       const isLight = e ? e.matches : window.matchMedia('(prefers-color-scheme: light)').matches;
       const path = isLight ? {
-        16: '/icon_light/16.png',
-        32: '/icon_light/32.png',
-        48: '/icon_light/48.png',
-        96: '/icon_light/96.png',
-        128: '/icon_light/128.png'
-      } : {
         16: '/icon/16.png',
         32: '/icon/32.png',
         48: '/icon/48.png',
         96: '/icon/96.png',
         128: '/icon/128.png'
+      } : {
+        16: '/icon_white/16.png',
+        32: '/icon_white/32.png',
+        48: '/icon_white/48.png',
+        96: '/icon_white/96.png',
+        128: '/icon_white/128.png'
       };
       
       // Update action icon
