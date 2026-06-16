@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { useThemeIcon } from '../../hooks/useThemeIcon';
 
@@ -9,18 +9,30 @@ function App() {
   const [enabled, setEnabled] = useState<boolean>(true);
   const [animating, setAnimating] = useState<boolean>(false);
 
+  useEffect(() => {
+    browser.storage.local.get('enabled').then((res) => {
+      if (res && typeof res.enabled === 'boolean') {
+        setEnabled(res.enabled);
+      }
+    });
+  }, []);
+
   const toggle = async () => {
     if (animating) return;
     setAnimating(true);
-    setEnabled(false);
+    const nextState = !enabled;
+    setEnabled(nextState);
+    await browser.storage.local.set({ enabled: nextState });
+    setAnimating(false);
+  };
     
     // Wait for the animation to play, then completely disable the extension.
     // This will close the popup and remove the new tab override.
-    setTimeout(async () => {
-      setAnimating(false);
-      await browser.management.setEnabled(browser.runtime.id, false);
-    }, 600);
-  };
+//    setTimeout(async () => {
+//      setAnimating(false);
+//      await browser.management.setEnabled(browser.runtime.id, false);
+//    }, 600);
+//  };
 
   return (
     <div className={`panel ${enabled ? 'panel-on' : 'panel-off'}`}>
@@ -30,7 +42,7 @@ function App() {
       {/* Status badge */}
       <div className={`status-badge ${enabled ? 'badge-on' : 'badge-off'}`}>
         <span className="badge-dot" />
-        <span className="badge-text">{enabled ? 'Active' : 'Turning Off...'}</span>
+        <span className="badge-text">{enabled ? 'Active' : 'Inactive'}</span>
       </div>
 
       {/* Big toggle button */}
