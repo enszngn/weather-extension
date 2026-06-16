@@ -1,7 +1,9 @@
 import './App.css';
 import { TopSites } from '../../components/TopSites/TopSites';
+import { useThemeIcon } from '../../hooks/useThemeIcon';
 
 function App() {
+  useThemeIcon();
   return (
     <div className="layout">
       <iframe

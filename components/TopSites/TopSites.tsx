@@ -28,8 +28,8 @@ export function TopSites() {
   const [sites, setSites] = useState<TopSite[]>([]);
 
   useEffect(() => {
-    if (typeof chrome !== 'undefined' && chrome.topSites) {
-      chrome.topSites.get((topSites) => {
+    if (typeof browser !== 'undefined' && browser.topSites) {
+      browser.topSites.get().then((topSites) => {
         setSites(topSites.slice(0, 6));
       });
     }
