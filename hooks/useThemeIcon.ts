@@ -2,20 +2,13 @@ import { useEffect } from 'react';
 
 export function useThemeIcon() {
   useEffect(() => {
-    const updateIconTheme = (e?: MediaQueryListEvent | MediaQueryList) => {
-      const isLight = e ? e.matches : window.matchMedia('(prefers-color-scheme: light)').matches;
-      const path = isLight ? {
+    const updateIconTheme = (_e?: MediaQueryListEvent | MediaQueryList) => {
+      const path = {
         16: '/icon/16.png',
         32: '/icon/32.png',
         48: '/icon/48.png',
         96: '/icon/96.png',
         128: '/icon/128.png'
-      } : {
-        16: '/icon_white/16.png',
-        32: '/icon_white/32.png',
-        48: '/icon_white/48.png',
-        96: '/icon_white/96.png',
-        128: '/icon_white/128.png'
       };
       
       // Update action icon
