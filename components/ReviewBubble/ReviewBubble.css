@@ -1,7 +1,10 @@
-/* ── Review bubble — gold/amber accent, matches TopSites bubble shape ── */
+/* ── Review bubble — gold/amber accent, right edge, vertically centered ── */
 
 .review-bubble {
-  position: relative;
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
   pointer-events: all;
   width: 52px;
   height: 52px;
@@ -19,6 +22,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
   text-decoration: none;
   cursor: pointer;
+  z-index: 10;
   transition:
     transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1),
     background 160ms ease,
@@ -26,7 +30,7 @@
 }
 
 .review-bubble:hover {
-  transform: scale(1.18);
+  transform: translateY(-50%) scale(1.18);
   background: rgba(251, 191, 36, 0.26);
   box-shadow:
     0 8px 28px rgba(0, 0, 0, 0.40),
@@ -35,7 +39,7 @@
 }
 
 .review-bubble:active {
-  transform: scale(1.05);
+  transform: translateY(-50%) scale(1.05);
 }
 
 /* ── Star icon ── */
@@ -47,12 +51,12 @@
   flex-shrink: 0;
 }
 
-/* ── Tooltip — identical pattern to TopSites tooltip ── */
+/* ── Tooltip — appears to the LEFT since bubble is on the right edge ── */
 .review-bubble__tooltip {
   position: absolute;
-  left: calc(100% + 12px);
+  right: calc(100% + 12px);
   top: 50%;
-  transform: translateY(-50%) translateX(-4px);
+  transform: translateY(-50%) translateX(4px);
   white-space: nowrap;
   background: rgba(20, 20, 24, 0.85);
   backdrop-filter: blur(10px);

@@ -48,8 +48,8 @@ function App() {
       />
       <div className="sidebar">
         <TopSites />
-        <ReviewBubble />
       </div>
+      <ReviewBubble />
     </div>
   );
 }
