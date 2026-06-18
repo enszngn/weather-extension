@@ -2,7 +2,7 @@
 
 .review-bubble {
   position: absolute;
-  right: 36px;
+  left: 80%;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: all;
