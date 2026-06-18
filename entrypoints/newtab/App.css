@@ -7,7 +7,7 @@ body, html, #root {
   background-color: #121316;
 }
 
-/* Full-screen stacking context so TopSites can float over the iframe */
+/* Full-screen stacking context so the sidebar can float over the iframe */
 .layout {
   position: relative;
   width: 100%;
@@ -21,4 +21,16 @@ body, html, #root {
   height: 100%;
   border: none;
   display: block;
+}
+
+/* Column that holds TopSites + ReviewBubble, anchored to the bottom-left */
+.sidebar {
+  position: absolute;
+  bottom: 36px;
+  left: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 10;
+  pointer-events: none;
 }

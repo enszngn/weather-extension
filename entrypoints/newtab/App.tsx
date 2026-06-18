@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { TopSites } from '../../components/TopSites/TopSites';
+import { ReviewBubble } from '../../components/ReviewBubble/ReviewBubble';
 import { useThemeIcon } from '../../hooks/useThemeIcon';
 
 function App() {
@@ -45,7 +46,10 @@ function App() {
         className="weather-iframe"
         allow="geolocation"
       />
-      <TopSites />
+      <div className="sidebar">
+        <TopSites />
+      </div>
+      <ReviewBubble />
     </div>
   );
 }
