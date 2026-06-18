@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 28px 24px 22px;
-  border-radius: 24px;
+  border-radius: 0;
   position: relative;
   overflow: hidden;
   transition: background 0.6s ease, box-shadow 0.6s ease;
