@@ -1,6 +1,6 @@
 .top-sites {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
   pointer-events: none; /* let clicks through to the iframe except on bubbles */
 }
@@ -52,12 +52,12 @@
   user-select: none;
 }
 
-/* ── Tooltip shown on hover ── */
+/* ── Tooltip shown on hover — appears above the bubble ── */
 .top-sites__tooltip {
   position: absolute;
-  left: calc(100% + 12px);
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
   white-space: nowrap;
   background: rgba(20, 20, 24, 0.85);
   backdrop-filter: blur(10px);
@@ -73,10 +73,9 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 140ms ease, transform 140ms ease;
-  transform: translateY(-50%) translateX(-4px);
 }
 
 .top-sites__bubble:hover .top-sites__tooltip {
   opacity: 1;
-  transform: translateY(-50%) translateX(0);
+  transform: translateX(-50%) translateY(0);
 }
