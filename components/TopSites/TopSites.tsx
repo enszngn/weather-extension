@@ -24,16 +24,43 @@ function getDisplayTitle(site: TopSite): string {
   }
 }
 
-export function TopSites() {
-  const [sites, setSites] = useState<TopSite[]>([]);
+/**
+ * Returns how many site bubbles to show based on the current viewport width.
+ * Targets 4 bubbles at 1920px and scales linearly, clamped to [2, 6].
+ *
+ * Examples:
+ *   768px  → 2
+ *   1280px → 3
+ *   1920px → 4  (reference)
+ *   2560px → 5
+ *   3840px → 6  (capped)
+ */
+function getMaxSites(): number {
+  return Math.max(2, Math.min(6, Math.round((window.innerWidth * 4) / 1920)));
+}
 
+export function TopSites() {
+  const [allSites, setAllSites] = useState<TopSite[]>([]);
+  const [maxSites, setMaxSites] = useState<number>(getMaxSites());
+
+  // Fetch top sites once
   useEffect(() => {
     if (typeof browser !== 'undefined' && browser.topSites) {
       browser.topSites.get().then((topSites) => {
-        setSites(topSites.slice(0, 6));
+        // Store up to 6 so we have a pool to slice from on resize
+        setAllSites(topSites.slice(0, 6));
       });
     }
   }, []);
+
+  // Recalculate visible count whenever the window is resized
+  useEffect(() => {
+    const handleResize = () => setMaxSites(getMaxSites());
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const sites = allSites.slice(0, maxSites);
 
   if (sites.length === 0) return null;
 
